@@ -30,7 +30,7 @@ public class AddressController {
     @RequestMapping("/addNewAddress")
     public Result addNewAddress(@RequestBody Address address) {
         try{
-            System.out.println("1、添加地址");
+            System.out.println("1、Address：添加地址");
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             address.setUserId(name);
             address.setIsDefault("0");
@@ -47,7 +47,7 @@ public class AddressController {
     @RequestMapping("/delOneAddress")
     public Result delOneAddress(Long id) {
         try{
-            System.out.println("2、删除地址");
+            System.out.println("2、Address：删除地址");
             addressService.delOneAddress(id);
             return new Result(true,"地址删除成功！");
         }catch (Exception e){
@@ -60,7 +60,7 @@ public class AddressController {
     @RequestMapping("/updateAddress")
     public Result updateAddress(@RequestBody Address address) {
             try{
-            System.out.println("3、修改地址");
+            System.out.println("3、Address：修改地址");
             addressService.updateAddress(address);
             return new Result(true,"地址修改成功！");
         }catch (Exception e){
@@ -74,7 +74,7 @@ public class AddressController {
     public Result changeStatus(Long id) {
         try{
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
-            System.out.println("4、默认地址修改");
+            System.out.println("4、Address：默认地址修改");
             addressService.changeStatus(id, username);
             return new Result(true,"成功修改默认地址！");
         }catch (Exception e){
@@ -86,14 +86,14 @@ public class AddressController {
     //查询当前登录用户的地址列表
     @RequestMapping("/findOneAddressUI")
     public Address findOneAddressUI(Long id) {
-        System.out.println("5、回显查询");
+        System.out.println("5、Address：回显查询");
         return addressService.findOneAddressUI(id);
     }
 
     //查询当前登录用户的地址列表
     @RequestMapping("/findAddressList")
     public List<Address> findAddressList() {
-        System.out.println("6、查询所有");
+        System.out.println("6、Address：查询所有");
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         return addressService.findListByLoginUser(name);
     }
@@ -101,17 +101,17 @@ public class AddressController {
     //查询地址的省市县信息
     @RequestMapping("/loadAllProvinces")
     public List<Provinces> loadAllProvinces() {
-        System.out.println("7、查询省信息");
+        System.out.println("7、Address：查询省信息");
         return addressService.loadAllProvinces();
     }
     @RequestMapping("/loadAllCities")
     public List<Cities> loadAllCities(String provinceId) {
-        System.out.println("8、查询市信息");
+        System.out.println("8、Address：查询市信息");
         return addressService.loadAllCities(provinceId);
     }
     @RequestMapping("/loadAllAreas")
     public List<Areas> loadAllAreas(String cityId) {
-        System.out.println("9、查询县/区信息");
+        System.out.println("9、Address：查询县/区信息");
         return addressService.loadAllAreas(cityId);
     }
 
