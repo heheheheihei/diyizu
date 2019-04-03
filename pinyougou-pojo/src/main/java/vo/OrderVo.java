@@ -4,6 +4,8 @@ import cn.itcast.core.pojo.order.Order;
 import cn.itcast.core.pojo.order.OrderItem;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,6 +20,15 @@ public class OrderVo implements Serializable {
     private List<OrderItem> orderItemList;
     //订单项数目
     private int num;
+    private Long orderId;
+    private BigDecimal payment;
+    private String status;
+    private Date paymentTime;
+    private String receiverAreaName;
+    private String receiverMobile;
+    private String receiver;
+    private String title;
+    private String sellerId;
 
     public Order getOrder() {
         return order;
@@ -41,20 +52,7 @@ public class OrderVo implements Serializable {
 
     public void setNum(int num) {
         this.num = num;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
-public class OrderVo implements Serializable {
-    private Long orderId;
-    private BigDecimal payment;
-    private String status;
-    private Date paymentTime;
-    private String receiverAreaName;
-    private String receiverMobile;
-    private String receiver;
-    private String title;
-    private String sellerId;
+    }
 
     public String getSellerId() {
         return sellerId;
@@ -131,14 +129,9 @@ public class OrderVo implements Serializable {
     @Override
     public String toString() {
         return "OrderVo{" +
-<<<<<<< HEAD
                 "order=" + order +
                 ",orderItemList=" + orderItemList +
                 ",num=" + num +
-                '}';
-    }
-
-=======
                 "orderId=" + orderId +
                 ", payment=" + payment +
                 ", status='" + status + '\'' +
@@ -149,5 +142,4 @@ public class OrderVo implements Serializable {
                 ", title='" + title + '\'' +
                 '}';
     }
->>>>>>> origin/master
 }
