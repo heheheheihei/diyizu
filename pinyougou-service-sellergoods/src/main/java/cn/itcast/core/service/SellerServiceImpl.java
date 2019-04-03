@@ -81,6 +81,7 @@ public class SellerServiceImpl implements  SellerService {
                         number+=item.getNum();
                         map.put(orderItem.getTitle(), number);
 
+
                     }
                 }
             }
