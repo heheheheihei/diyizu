@@ -269,4 +269,15 @@ app.controller('goodsController' ,function($scope,$controller,$location,typeTemp
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
 });	
