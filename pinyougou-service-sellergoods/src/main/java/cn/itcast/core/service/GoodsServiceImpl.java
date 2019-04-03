@@ -246,8 +246,10 @@ public class GoodsServiceImpl implements GoodsService {
     private JmsTemplate jmsTemplate;
     @Autowired
     private Destination topicPageAndSolrDestination;
+    /*@Autowired
+    private Destination queueSolrDeleteDestination;*/
     @Autowired
-    private Destination queueSolrDeleteDestination;
+    private Destination topicPageAndSolrDeleteDestination;
     //开始审核
     @Override
     public void updateStatus(Long[] ids, String status) {
@@ -268,7 +270,6 @@ public class GoodsServiceImpl implements GoodsService {
                     }
                 });
 
-
             }
 
         }
@@ -284,14 +285,12 @@ public class GoodsServiceImpl implements GoodsService {
             //1:更新商品的是否删除字段为1
             goodsDao.updateByPrimaryKeySelective(goods);
             //发消息
-            jmsTemplate.send(queueSolrDeleteDestination, new MessageCreator() {
+            jmsTemplate.send(topicPageAndSolrDeleteDestination, new MessageCreator() {
                 @Override
                 public Message createMessage(Session session) throws JMSException {
                     return  session.createTextMessage(String.valueOf(id));
                 }
             });
-
-
         }
     }
 }

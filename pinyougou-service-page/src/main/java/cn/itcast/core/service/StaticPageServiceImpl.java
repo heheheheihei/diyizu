@@ -114,4 +114,10 @@ public class StaticPageServiceImpl implements StaticPageService,ServletContextAw
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
+
+    //删除静态化页面
+    public void delete(Long id){
+        File file = new File(getPath("/" + id + ".html"));
+        System.out.println("静态化页面删除成功?"+file.delete());
+    }
 }
