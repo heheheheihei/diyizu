@@ -19,7 +19,6 @@ public class OrderVo implements Serializable {
     private String title;
     private String sellerId;
 
-
     public String getSellerId() {
         return sellerId;
     }
