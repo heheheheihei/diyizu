@@ -38,4 +38,5 @@ public class SellerController {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         return sellerService.showshop(name);
     }
+
 }
