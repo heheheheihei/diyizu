@@ -43,6 +43,7 @@ public class OrdersServiceImpl implements OrdersService {
             OrderItem orderItem = orderItemDao.selectByPrimaryKey(order.getOrderId());
 //            System.out.println(orderItem.getTitle());
             orderVo.setTitle(orderItem.getTitle());
+
             volist.add(orderVo);
 
         }
